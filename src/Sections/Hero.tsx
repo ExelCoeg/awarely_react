@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section
       id="hero"
-      className="flex flex-col items-center justify-center mb-50"
+      className="flex flex-col items-center justify-center -z-0 mb-50"
     >
       <SectionTitle
         title={heroHeaderData.title}

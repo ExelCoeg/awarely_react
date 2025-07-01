@@ -3,7 +3,7 @@ import LayananCard from "../Components/LayananCard";
 import { layananDatas } from "../Datas/layananDatas";
 export const Layanan = () => {
   return (
-    <div>
+    <section id="layanan">
       <SectionTitle
         title="Layanan Kami"
         subtitle="Kami menyediakan berbagai layanan untuk membantu Anda dalam situasi darurat."
@@ -20,7 +20,7 @@ export const Layanan = () => {
         ))}
         ;
       </div>
-    </div>
+    </section>
   );
 };
 

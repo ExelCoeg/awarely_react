@@ -3,7 +3,10 @@ import SectionTitle from "../Components/SectionTitle";
 import { featuresDatas } from "../Datas/featureDatas";
 export const Features = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <section
+      id="features"
+      className="flex flex-col items-center justify-center"
+    >
       <SectionTitle
         title={"Awarely"}
         subtitle="Langkah Kecil untuk Rasa Aman yang Lebih Besar"
@@ -22,7 +25,7 @@ export const Features = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
