@@ -1,12 +1,13 @@
 import React from "react";
 
 interface SectionTitleProps {
-  title: string;
+  title?: string;
   subtitle?: string;
   description?: string;
   className?: string;
   titleClassName?: string;
   subtitleClassName?: string;
+  subtitleColor?: string; // This prop is not used in the component, but can be added for future use
   alignment?: "left" | "center" | "right";
   size?: "small" | "medium" | "large";
 }
@@ -27,7 +28,6 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     right: "text-right",
   };
 
-  // Tailwind text size classes based on size prop
   const titleSizeMap = {
     small: "text-3xl sm:text-4xl",
     medium: "text-5xl sm:text-6xl",
@@ -47,7 +47,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   };
 
   return (
-    <div className={`mb-8 ${alignmentClasses[alignment]} ${className}`}>
+    <div className={` ${alignmentClasses[alignment]} ${className}`}>
       <h2
         className={`${titleSizeMap[size]} font-bold text-primary font-sans leading-tight mb-2 ${titleClassName}`}
       >
@@ -56,7 +56,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 
       {subtitle && (
         <p
-          className={`${subtitleSizeMap[size]} text-black font-sans font-bold max-w-xs ${
+          className={`${subtitleSizeMap[size]} ${className} font-sans font-bold ${
             alignment === "center" ? "mx-auto" : ""
           } ${subtitleClassName}`}
         >
@@ -66,7 +66,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 
       {description && (
         <p
-          className={`${descriptionSizeMap[size]} text-gray-700 max-w-sm mt-4 ${
+          className={`${descriptionSizeMap[size]} ${className} text-gray-700 mt-4 ${
             alignment === "center" ? "mx-auto" : ""
           }`}
         >

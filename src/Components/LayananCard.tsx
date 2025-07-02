@@ -1,35 +1,44 @@
 import React from "react";
 import Button from "./Button";
+import Badge from "./Badge";
 
 interface LayananCardProps {
   title: string;
   subtitle?: string;
   description?: string;
+  badgeText?: string;
 }
 
 const LayananCard: React.FC<LayananCardProps> = ({
   title = "",
   subtitle = "",
   description = "",
+  badgeText = "",
 }) => {
   return (
-    <div className="mx-2 my-20 rounded-xl bg-primary max-w-100 h-120">
-      <div className="relative flex items-center justify-center h-20 m-auto font-sans text-2xl font-bold text-center text-white bottom-10 w-80 rounded-xl bg-primary-dark">
-        {title}
+    <div className="z-0 mx-2 my-10 font-sans text-white rounded-xl bg-primary max-w-120 lg:max-w-150 h-135 lg:h-180 xl:h-170">
+      <div className="relative flex items-center justify-center h-20 m-auto text-2xl font-bold text-center lg:text-3xl bottom-10 w-90 lg:w-90 rounded-xl bg-primary-dark">
+        <p>{title}</p>
       </div>
-      <div className="px-10">
-        <p className="mt-2 font-sans text-sm font-bold text-center text-white">
+      <div className="">
+        <p className="mt-2 text-sm font-bold text-center text-white leading-20 lg:text-lg">
           {subtitle}
         </p>
-        <hr className="my-5 border-white" />
-        <p className="font-sans text-xs leading-8 text-center text-white">
+      </div>
+      <div className="px-10 lg:mb-10">
+        <hr className="my-5 border-white lg:my-10 " />
+        <p className="text-xs leading-8 text-center text-white lg:text-lg">
           {description}
         </p>
+      </div>
+      <div className="flex items-center justify-center mt-5">
+        <Badge text={badgeText} />
       </div>
       <div className="flex items-center justify-center mt-5 text-primary">
         <Button
           text={"Buat Janji"}
           color="orange-100"
+          size="medium"
           textColor="primary"
           borderRadius="rounded-partial"
         />

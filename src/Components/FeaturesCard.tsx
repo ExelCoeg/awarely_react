@@ -19,7 +19,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
 }) => {
   return (
     <div
-      className={`${backgroundColor} p-5 rounded-2xl max-w-100 max-h-80 my-5`}
+      className={`${backgroundColor} p-5 rounded-2xl max-w-110 max-h-80 my-5`}
     >
       <div className="flex flex-row items-center mb-3 ">
         <img

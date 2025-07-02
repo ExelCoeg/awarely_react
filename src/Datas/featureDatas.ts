@@ -8,6 +8,7 @@ export interface FeatureData {
   description?: string;
   buttonText?: string;
   imageUrl?: string;
+  subtitleColor?: string; // Optional, used for styling the subtitle background
   backgroundColor?: string;
 }
 

@@ -4,17 +4,20 @@ import { ArrowRight } from "lucide-react";
 interface ButtonProps {
   text: string;
   borderRadius?: "rounded-full" | "rounded-partial" | "rounded-none";
+  className?: string;
   size?: "small" | "medium" | "large";
   color?: string;
   textColor?: string;
+  arrow?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
   text,
-  size = "small",
   borderRadius = "rounded-full",
+  className = "",
   color = "primary",
   textColor = "white",
+  arrow = true,
 }) => {
   const sizeClasses = {
     small: "text-2xs px-5 py-2",
@@ -28,9 +31,9 @@ const Button: React.FC<ButtonProps> = ({
   };
   return (
     <button
-      className={`${borderRadiusClasses[borderRadius]} ${sizeClasses[size]} text-left font-bold bg-${color} text-${textColor} hover:bg-primary-light cursor-pointer font-sans `}
+      className={` ${borderRadiusClasses[borderRadius]} ${sizeClasses["small"]} text-left font-bold bg-${color} text-${textColor} hover:bg-primary-light cursor-pointer font-sans ${className} `}
     >
-      {text} <ArrowRight className="inline ml-1" />
+      {text} {arrow && <ArrowRight className="inline ml-1" />}
     </button>
   );
 };

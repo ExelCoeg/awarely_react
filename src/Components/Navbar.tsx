@@ -2,44 +2,86 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import AwarelyLogo from "../Assets/Logo.png";
 import { navigationItems } from "../Datas/navbarDatas";
-import { ArrowLeft, MoveLeft } from "lucide-react";
-
+import { MoveLeft, User } from "lucide-react";
+import Button from "./Button";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="w-full h-20 py-5 bg-white items-between item-center mb-15 rounded-b-3xl">
+    <nav className="justify-center h-20 py-5 mx-auto bg-white shadow-xl max-w-425 mb-15 rounded-b-3xl">
       <div className="flex flex-row items-center justify-between px-10">
         <div className="flex items-center gap-2 ">
           <img src={AwarelyLogo} alt="" />
           <h1 className="font-sans text-3xl">Awarely</h1>
         </div>
-        <button className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+        <div className="items-center hidden gap-4 font-sans text-lg lg:flex">
+          {navigationItems.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
+              className="flex px-4 py-2 text-black hover:bg-gray-100"
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="flex flex-row items-center">{item.label}</div>
+            </a>
+          ))}
+        </div>
+        <div className="items-center hidden gap-4 lg:flex">
+          <Button
+            text="Daftar"
+            textColor="primary"
+            color="white"
+            className="border border-primary"
+            arrow={false}
+          ></Button>
+          <Button text="Masuk" arrow={false}></Button>
+        </div>
+        <button
+          className="cursor-pointer lg:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           <Menu></Menu>
         </button>
       </div>
+
       <div
-        className={`shadow-lg fixed right-0 top-0 h-full bg-white w-64 transition-transform duration-300 ${
+        className={`z-1 fixed px-4 right-0 top-0 h-full bg-white w-64 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-100"
         }`}
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="flex items-start px-4 py-2 font-sans font-semibold text-gray-700 cursor-pointer"
+          className="flex items-start px-4 py-2 font-sans font-semibold text-black cursor-pointer"
         >
           <MoveLeft className="mr-1"></MoveLeft>
           Close
         </button>
+        <div className="flex items-center gap-2 px-4 mt-40 py-">
+          <User
+            color="white"
+            className="p-1 bg-gray-500 rounded-full size-10"
+          ></User>
+          <div className="font-sans">
+            <h3 className="text-sm font-medium">Username</h3>
+            <p className="text-sm text-gray-500">email@gmail.com</p>
+          </div>
+        </div>
+
         {isOpen && (
-          <div className="py-10 font-sans">
+          <div className="py-10 font-sans text-lg font-medium">
             {navigationItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
+              <div key={item.id}>
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="block px-4 py-2 text-black hover:bg-gray-100"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex flex-row items-center">
+                    {item.icon && <item.icon className="mr-2 text-gray-500 " />}
+                    {item.label}
+                  </div>
+                </a>
+              </div>
             ))}
           </div>
         )}
