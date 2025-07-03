@@ -33,7 +33,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
         </div>
       </div>
       <p className="mb-3 font-sans text-sm">{description}</p>
-      <Button text={buttonText} borderRadius="rounded-partial" />
+      <Button text={buttonText} />
     </div>
   );
 };

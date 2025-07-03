@@ -18,7 +18,6 @@ export const Hero = () => {
         ></SectionTitle>
         <Button
           text="Lanjutkan"
-          size="medium"
           className="mt-10 text-2lg lg:py-3 lg:px-5"
         ></Button>
       </div>

@@ -11,9 +11,9 @@ export const Navbar = () => {
       <div className="flex flex-row items-center justify-between px-10">
         <div className="flex items-center gap-2 ">
           <img src={AwarelyLogo} alt="" />
-          <h1 className="font-sans text-3xl">Awarely</h1>
+          <h1 className="font-sans text-3xl font-semibold ">Awarely</h1>
         </div>
-        <div className="items-center hidden gap-4 font-sans text-lg lg:flex">
+        <div className="items-center hidden gap-4 font-sans text-lg font-medium lg:flex">
           {navigationItems.map((item) => (
             <a
               key={item.id}
@@ -28,12 +28,11 @@ export const Navbar = () => {
         <div className="items-center hidden gap-4 lg:flex">
           <Button
             text="Daftar"
-            textColor="primary"
-            color="white"
-            className="border border-primary"
+            variant="tertiary"
             arrow={false}
+            href="/signup"
           ></Button>
-          <Button text="Masuk" arrow={false}></Button>
+          <Button text="Masuk" arrow={false} href="/signin"></Button>
         </div>
         <button
           className="cursor-pointer lg:hidden"

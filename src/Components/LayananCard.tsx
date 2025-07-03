@@ -35,13 +35,7 @@ const LayananCard: React.FC<LayananCardProps> = ({
         <Badge text={badgeText} />
       </div>
       <div className="flex items-center justify-center mt-5 text-primary">
-        <Button
-          text={"Buat Janji"}
-          color="orange-100"
-          size="medium"
-          textColor="primary"
-          borderRadius="rounded-partial"
-        />
+        <Button text={"Buat Janji"} variant="secondary" textColor="primary" />
       </div>
     </div>
   );
