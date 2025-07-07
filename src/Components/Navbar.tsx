@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Menu } from "lucide-react";
 import AwarelyLogo from "../Assets/Logo.png";
 import { navigationItems } from "../Datas/navbarDatas";
 import { MoveLeft, User } from "lucide-react";
 import Button from "./Button";
+import { Link } from "react-router-dom";
+import { AuthContext } from "@/Context/AuthContext";
+
 export const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="justify-center h-20 py-5 mx-auto bg-white shadow-xl max-w-425 mb-15 rounded-b-3xl">
@@ -15,25 +19,32 @@ export const Navbar = () => {
         </div>
         <div className="items-center hidden gap-4 font-sans text-lg font-medium lg:flex">
           {navigationItems.map((item) => (
-            <a
+            <Link
               key={item.id}
-              href={item.href}
+              to={item.href}
               className="flex px-4 py-2 text-black hover:bg-gray-100"
               onClick={() => setIsOpen(false)}
             >
               <div className="flex flex-row items-center">{item.label}</div>
-            </a>
+            </Link>
           ))}
         </div>
-        <div className="items-center hidden gap-4 lg:flex">
-          <Button
-            text="Daftar"
-            variant="tertiary"
-            arrow={false}
-            href="/signup"
-          ></Button>
-          <Button text="Masuk" arrow={false} href="/signin"></Button>
-        </div>
+        {user ? (
+          <div>
+            <p>Test</p>
+          </div>
+        ) : (
+          <div className="items-center hidden gap-4 lg:flex">
+            <Button
+              text="Daftar"
+              variant="tertiary"
+              arrow={false}
+              href="/signup"
+            ></Button>
+            <Button text="Masuk" arrow={false} href="/signin"></Button>
+          </div>
+        )}
+
         <button
           className="cursor-pointer lg:hidden"
           onClick={() => setIsOpen(!isOpen)}

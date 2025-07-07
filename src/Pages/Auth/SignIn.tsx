@@ -1,22 +1,67 @@
 import Button from "@/Components/Button";
 import InputField from "@/Components/InputField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import api from "../../api/axios";
+import LoadingOverlay from "@/Components/LoadingOverlay";
+import AuthContext from "@/Context/AuthContext";
 
 export const SignIn = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [access, setAccessToken] = useState("");
+  const { setUser, user } = useContext(AuthContext);
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      console.log("Login attempt with email:", email);
+      const res = await api.post("/auth/login", { email, password });
+      setUser(res.data.user);
+      setAccessToken(res.data.accessToken);
+      navigate("/home", {
+        state: {
+          showPopUp: true,
+        },
+      });
+    } catch (err) {
+      setError("Login Failed!");
+      console.error("Login Failed");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen font-sans bg-white-bone animate-fade-in-up">
-      <h1 className="mb-10 text-5xl font-bold ">Sign Up</h1>
+      {loading && <LoadingOverlay />}
+      <h1 className="mb-10 text-5xl font-bold ">Sign In</h1>
       <form action="" className="mb-10 bg-white shadow-xl rounded-3xl w-110">
         <div className="flex flex-col p-10 my-10">
+          {error && (
+            <div className="p-4 mb-4 text-red-800 bg-red-100 border border-red-300 rounded-lg">
+              {error}
+            </div>
+          )}
           <InputField
             label="Email"
             type="email"
             placeholder="Masukkan email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError("");
+            }}
           ></InputField>
           <InputField
             label="Password"
             type="password"
             placeholder="Masukkan password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError("");
+            }}
           ></InputField>
           <Link className="my-4 font-medium text-black" to="/home">
             Lupa Password?
@@ -26,6 +71,7 @@ export const SignIn = () => {
             text="Sign In"
             variant="primary"
             arrow={false}
+            onClick={handleLogin}
           ></Button>
         </div>
       </form>
