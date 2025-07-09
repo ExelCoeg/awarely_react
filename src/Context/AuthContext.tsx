@@ -32,7 +32,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   useEffect(() => {
     api
       .get("/auth/me", { withCredentials: true })
-      .then((res) => setUser(res.data.user))
+      .then((res) => {
+        console.log("Fetched from /auth/me:", res.data.user);
+        setUser(res.data.user);
+      })
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
   }, []);

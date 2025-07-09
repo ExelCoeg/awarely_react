@@ -6,6 +6,7 @@ import { MoveLeft, User } from "lucide-react";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { AuthContext } from "@/Context/AuthContext";
+import { ProfileDropdown } from "./ProfileDropdown";
 
 export const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -30,9 +31,7 @@ export const Navbar = () => {
           ))}
         </div>
         {user ? (
-          <div>
-            <p>Test</p>
-          </div>
+          <ProfileDropdown />
         ) : (
           <div className="items-center hidden gap-4 lg:flex">
             <Button

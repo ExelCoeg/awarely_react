@@ -9,9 +9,7 @@ export const Hero = () => {
   const location = useLocation();
   const [showPopUp, setShowPopUp] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
-  const { user } = useContext(AuthContext);
   useEffect(() => {
-    console.log("user:", user);
     if (location.state?.showPopUp) {
       setShowPopUp(true);
       const fadeTimer = setTimeout(() => setFadeOut(true), 1000);
@@ -31,7 +29,7 @@ export const Hero = () => {
       id="hero"
       className="flex flex-col items-center justify-center sm:gap-25 lg:gap-50 lg:flex-row -z-0 mb-25"
     >
-      {showPopUp && (
+      {/* {showPopUp && (
         <div
           className={`fixed top-30 z-50 flex items-center justify-center bg-black-100 bg-opacity-40 ${fadeOut ? "opacity-0 transition-opacity duration-500" : "opacity-100"}`}
         >
@@ -39,7 +37,7 @@ export const Hero = () => {
             <p>You’ve successfully logged in.</p>
           </div>
         </div>
-      )}
+      )} */}
       <div className="flex flex-col items-center justify-center ml-10 lg:ml-0 lg:items-start lg:justify-start">
         <SectionTitle
           title={heroHeaderData.title}
