@@ -11,15 +11,14 @@ export const Home = () => {
   const { setUser, user } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("user json: " + user);
     const fetchUser = async () => {
       try {
         const res = await api.get("/auth/me", {
           withCredentials: true,
         });
         setUser(res.data.user);
-      } catch (err) {
-        console.error("Failed to fetch user", err);
+      } catch {
+        console.log("Failed to fetch user.");
       }
     };
 

@@ -3,13 +3,16 @@ import Dropdown from "@/Components/Dropdown";
 import InputField from "@/Components/InputField";
 import RadioInput from "@/Components/RadioInput";
 import SectionTitle from "@/Components/SectionTitle";
-import { options, timeOptions } from "../Datas/optionsDatas";
+import { options, timeOptions } from "../../Datas/optionsDatas";
+import { KonselorDosenData } from "../../Datas/konselorDatas";
 import { useState } from "react";
 import LoadingOverlay from "@/Components/LoadingOverlay";
 import api from "@/api/axios";
 import { useNavigate } from "react-router-dom";
+import Header from "@/Components/Header";
 
-export const Laporan = () => {
+export const Ultksp = () => {
+  const [counselor, setCounselor] = useState("");
   const [contact, setContact] = useState("");
   const [story, setStory] = useState("");
   const [date, setDate] = useState("");
@@ -22,7 +25,8 @@ export const Laporan = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.post("/forms/laporan", {
+      const res = await api.post("/forms/layanan/ultksp", {
+        counselor,
         contact,
         story,
         availability,
@@ -45,13 +49,13 @@ export const Laporan = () => {
       >
         <div className="flex flex-col items-center justify-center mb-10 ">
           <SectionTitle
-            title={"Laporkan"}
+            title={"Layanan Konseling"}
             className="flex flex-row lg:text-left lg:max-w-150 max-w-100"
             size="medium"
             alignment="center"
           />
           <SectionTitle
-            subtitle='"Suaramu berharga. Laporkan dengan aman"'
+            subtitle='"ULTKSP"'
             className="flex flex-row italic text-tertiary lg:text-center lg:max-w-150 max-w-100 lg:text-3xl"
             alignment="center"
           ></SectionTitle>
@@ -60,6 +64,21 @@ export const Laporan = () => {
           action=""
           className="p-6 mx-auto w-115 rounded-2xl bg-tertiary lg:w-250 "
         >
+          <div className="w-full mb-5">
+            <Header title="Dosen PA" />
+
+            <Dropdown
+              options={KonselorDosenData.map((val: string) => ({
+                label: val,
+                value: val,
+              }))}
+              selected={counselor}
+              onChange={(val: string) => {
+                setCounselor(val);
+              }}
+              disabled={false}
+            />
+          </div>
           <InputField
             label="Kontak (WhatsApp/Line)"
             labelColor="text-white"
@@ -74,19 +93,15 @@ export const Laporan = () => {
             label="Tolong ceritakan apa yang terjadi padamu!"
             labelColor="text-white"
             placeholder="Ceritakan disini..."
-            className={`${sm_className} pb-30`}
+            className={`${sm_className} pb-20`}
             onChange={(e) => {
               setStory(e.target.value);
             }}
           />
           <div className="flex flex-col gap-2 font-sans font-semibold text-white">
-            <label className="">
-              Apakah kamu memerlukan bantuan pendampingan lanjutan?
-            </label>
-            <label className="text-sm">
-              Pendampingan yang dimaksud berupa pendampingan psikologis dan/atau
-              pelaporan hukum.
-            </label>
+            <Header
+              title={"Apakah kamu memerlukan bantuan pendampingan lanjutan?"}
+            ></Header>
             <RadioInput
               className="font-semibold text-white mb-9"
               name="availability"
@@ -131,4 +146,4 @@ export const Laporan = () => {
   );
 };
 
-export default Laporan;
+export default Ultksp;

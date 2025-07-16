@@ -16,7 +16,7 @@ interface DropdownProps {
 const Dropdown: React.FC<DropdownProps> = ({
   options,
   selected,
-  disabled,
+  disabled = false,
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     options.find((opt) => opt.value === selected)?.label || "Select";
 
   return (
-    <div className="w-full text-left " ref={dropdownRef}>
+    <div className="text-left " ref={dropdownRef}>
       <div className="w-full lg:w-100">
         <button
           type="button"
@@ -67,7 +67,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       </div>
 
       {isOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white rounded-md shadow-lg bottom-10 lg:w-100 ring-1 ring-black ring-opacity-5">
+        <div className="absolute z-10 mt-2 bg-white rounded-md shadow-lg w-100 ring-1 ring-black ring-opacity-5">
           <div className="py-1">
             {options.map((option) => (
               <button
