@@ -7,6 +7,7 @@
   --color-secondary: #b5a196;
   --color-tertiary: #a5714c;
   --color-white-bone: #ede7d9;
+
 }
 /* Animations */
 @theme {
@@ -26,3 +27,9 @@
 .font-sans {
   font-family: "Poppins", sans-serif;
 }
+
+
+input[type="date"]::-webkit-datetime-edit {
+  color: var(--color-tertiary); 
+}
+

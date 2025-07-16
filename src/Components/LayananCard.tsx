@@ -7,6 +7,7 @@ interface LayananCardProps {
   subtitle?: string;
   description?: string;
   badgeText?: string;
+  href?: string;
 }
 
 const LayananCard: React.FC<LayananCardProps> = ({
@@ -14,6 +15,7 @@ const LayananCard: React.FC<LayananCardProps> = ({
   subtitle = "",
   description = "",
   badgeText = "",
+  href = "",
 }) => {
   return (
     <div className="z-0 mx-2 my-10 font-sans text-white rounded-xl bg-primary max-w-120 lg:max-w-150 h-135 lg:h-180 xl:h-170">
@@ -35,7 +37,12 @@ const LayananCard: React.FC<LayananCardProps> = ({
         <Badge text={badgeText} />
       </div>
       <div className="flex items-center justify-center mt-5 text-primary">
-        <Button text={"Buat Janji"} variant="secondary" textColor="primary" />
+        <Button
+          text={"Buat Janji"}
+          variant="secondary"
+          textColor="primary"
+          href={href}
+        />
       </div>
     </div>
   );

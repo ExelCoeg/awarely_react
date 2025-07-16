@@ -35,6 +35,7 @@ export const Features = () => {
             buttonText={item.buttonText}
             imageUrl={item.imageUrl}
             backgroundColor={item.backgroundColor}
+            href={item.href}
           />
         ))}
       </div>

@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import api from "../../api/axios";
 import LoadingOverlay from "@/Components/LoadingOverlay";
 import AuthContext from "@/Context/AuthContext";
+import ErrorMessage from "@/Components/ErrorMessage";
 
 export const SignIn = () => {
   const [loading, setLoading] = useState(false);
@@ -38,11 +39,7 @@ export const SignIn = () => {
       <h1 className="mb-10 text-5xl font-bold ">Sign In</h1>
       <form action="" className="mb-10 bg-white shadow-xl rounded-3xl w-110">
         <div className="flex flex-col p-10 my-10">
-          {error && (
-            <div className="p-4 mb-4 text-red-800 bg-red-100 border border-red-300 rounded-lg">
-              {error}
-            </div>
-          )}
+          {error && <ErrorMessage error={error} />}
           <InputField
             label="Email"
             type="email"
@@ -60,6 +57,7 @@ export const SignIn = () => {
               setPassword(e.target.value);
               setError("");
             }}
+            labelColor={""}
           ></InputField>
           <Link className="my-4 font-medium text-black" to="/home">
             Lupa Password?

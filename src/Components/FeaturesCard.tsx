@@ -7,6 +7,7 @@ interface FeaturesCardProps {
   buttonText?: string;
   imageUrl?: string;
   backgroundColor?: string;
+  href?: string;
 }
 
 const FeaturesCard: React.FC<FeaturesCardProps> = ({
@@ -16,6 +17,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
   buttonText = "",
   imageUrl = "",
   backgroundColor = "bg-orange-100",
+  href = "",
 }) => {
   return (
     <div
@@ -33,7 +35,7 @@ const FeaturesCard: React.FC<FeaturesCardProps> = ({
         </div>
       </div>
       <p className="mb-3 font-sans text-sm">{description}</p>
-      <Button text={buttonText} />
+      <Button text={buttonText} href={href} />
     </div>
   );
 };

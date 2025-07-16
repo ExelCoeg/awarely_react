@@ -5,20 +5,28 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/axios";
 import LoadingOverlay from "@/Components/LoadingOverlay";
 import AuthContext from "@/Context/AuthContext";
+import ErrorMessage from "@/Components/ErrorMessage";
 export const SignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
+  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useContext(AuthContext);
+  
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     if (email !== confirmEmail) {
-      alert("Email and Confirm Email do not match!");
-      navigate("/signup");
+      alert("Email and Confirm Email do not match!"); 
+      setLoading(false);
+      return;
+    }
+    if(password.length < 6){
+      setError("Password should atleast has 6 characters");
+      setLoading(false);
       return;
     }
     try {
@@ -29,7 +37,6 @@ export const SignUp = () => {
         confirmEmail,
         password,
       });
-      setUser(res.data.user);
       navigate("/home");
     } catch (err) {
       console.error("Sign Up failed: ", err);
@@ -42,32 +49,35 @@ export const SignUp = () => {
       {loading && <LoadingOverlay />}
       <h1 className="mb-10 text-5xl font-bold ">Sign Up</h1>
       <form action="" className="mb-10 bg-white shadow-xl rounded-3xl w-110">
+        
         <div className="flex flex-col p-15">
+          {error && (
+            <ErrorMessage error={error}/>
+          )}
           <InputField
             label="Username"
             type="username"
             placeholder="Masukkan username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {setUsername(e.target.value);setError("");}}
           ></InputField>
           <InputField
             label="Email"
             type="email"
             placeholder="Masukkan email"
-            onChange={(e) => setEmail(e.target.value)}
-            // className="mb-2"
+            onChange={(e) => {setEmail(e.target.value);setError("");}}
           ></InputField>
-          {/* <p className="mb-5 text-red-500">test</p> */}
+        
           <InputField
             label="Confirm Email"
             type="email"
             placeholder="Konfirmasi email"
-            onChange={(e) => setConfirmEmail(e.target.value)}
+            onChange={(e) => {setConfirmEmail(e.target.value);setError("");}}
           ></InputField>
           <InputField
             label="Password"
             type="password"
             placeholder="Masukkan password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {setPassword(e.target.value);setError("");}}
           ></InputField>
           <p className="my-4 text-sm font-medium text-black">
             Sudah punya akun?{" "}

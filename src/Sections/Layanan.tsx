@@ -26,6 +26,7 @@ export const Layanan = () => {
             subtitle={item.subtitle}
             description={item.description}
             badgeText={item.badgeText}
+            href={item.href}
           />
         ))}
         ;

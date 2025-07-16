@@ -10,6 +10,7 @@ export interface FeatureData {
   imageUrl?: string;
   subtitleColor?: string; // Optional, used for styling the subtitle background
   backgroundColor?: string;
+  href?:string;
 }
 
 export const featuresDatas: FeatureData[] = [
@@ -21,6 +22,7 @@ export const featuresDatas: FeatureData[] = [
     buttonText: "Laporkan",
     imageUrl: LaporIcon,
     backgroundColor: "bg-orange-100",
+    href:"/laporan"
   },
   {
     title: "Tutorial Beladiri",
