@@ -31,16 +31,10 @@
 </p>
 <h1>📚 Table of Contents</h1>
 
-- [About](#about)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Scripts](#scripts)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#Overview)
+- [Installation](#Installation)
 
-<h1>🧠 Overview</h1>
+# Overview
 awarely_react is a robust starter template designed to jumpstart React projects with a focus on maintainability, performance, and developer experience. Built with TypeScript, Vite, and TailwindCSS, it streamlines development workflows and enforces best practices.
 
 <h2>
