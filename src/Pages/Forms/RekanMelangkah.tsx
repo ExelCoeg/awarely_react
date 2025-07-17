@@ -122,7 +122,7 @@ export const RekanMelangkah = () => {
                 setDate(e.target.value);
               }}
             />
-            <div>
+            <div className="w-full">
               <Header title="Tentukan Waktu" />
               <Dropdown
                 options={timeOptions}

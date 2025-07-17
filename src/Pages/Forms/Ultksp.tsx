@@ -125,7 +125,7 @@ export const Ultksp = () => {
                 setDate(e.target.value);
               }}
             />
-            <div>
+            <div className="w-full">
               <h1 className="mb-2 font-sans text-xl font-semibold text-white">
                 Tentukan waktu
               </h1>

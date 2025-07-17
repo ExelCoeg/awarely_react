@@ -40,8 +40,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     options.find((opt) => opt.value === selected)?.label || "Select";
 
   return (
-    <div className="text-left " ref={dropdownRef}>
-      <div className="w-full lg:w-100">
+    <div className="text-left" ref={dropdownRef}>
+      <div className="w-full">
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
