@@ -1,69 +1,80 @@
-# React + TypeScript + Vite
+<h1 align="center">AWARELY_REACT</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <em>Empowering Seamless, Scalable Frontend Experiences</em>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <img src="https://img.shields.io/github/last-commit/your-username/awarely_react?style=flat-square&logo=github&label=last%20commit" />
+  <img src="https://img.shields.io/badge/typescript-96.5%25-blue?style=flat-square&logo=typescript" />
+  <img src="https://img.shields.io/badge/languages-4-blue?style=flat-square" />
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <em>Built with the tools and technologies:</em>
+</p>
 
-## Expanding the ESLint configuration
+<p align="center">
+  <img src="https://img.shields.io/badge/JSON-000?style=flat-square&logo=json&logoColor=white" />
+  <img src="https://img.shields.io/badge/Markdown-000?style=flat-square&logo=markdown&logoColor=white" />
+  <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white" />
+  <img src="https://img.shields.io/badge/Autoprefixer-EF4444?style=flat-square&logo=autoprefixer&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black" />
+  <br />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white" />
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white" />
+</p>
+<h1>📚 Table of Contents</h1>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+<h1>🧠 Overview</h1>
+awarely_react is a robust starter template designed to jumpstart React projects with a focus on maintainability, performance, and developer experience. Built with TypeScript, Vite, and TailwindCSS, it streamlines development workflows and enforces best practices.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+<h2>
+  Why use awarely_react?
+</h2> 
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+🛠️ **Fast Development Environment**: Seamless integration of Vite, React, and TailwindCSS for rapid builds and hot module replacement.
+
+🎨 **Consistent Styling**: TailwindCSS ensures a cohesive and responsive UI across your app.
+
+🧱 **Modular Architecture**: Reusable components and path aliases simplify maintenance and scalability.
+
+✅ **Code Quality**: ESLint setup enforces clean coding standards, reducing bugs and improving readability.
+
+🔒 **Secure API Integration**: Centralized axios client streamlines backend communication.
+
+🧭 **Structured Routing & Context**: Clear navigation and user session management for a smooth user experience.
+
+
+# Installation
+1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/awarely_react
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Navigate to the project directory
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+cd awarely_react
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Install dependencies
+
+```bash
+npm install
 ```
