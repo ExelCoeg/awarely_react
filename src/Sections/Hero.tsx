@@ -49,6 +49,7 @@ export const Hero = () => {
         <Button
           text="Lanjutkan"
           className="mt-10 text-2lg lg:py-3 lg:px-5"
+          href="#features"
         ></Button>
       </div>
       <img

@@ -33,3 +33,6 @@ input[type="date"]::-webkit-datetime-edit {
   color: var(--color-tertiary); 
 }
 
+html{
+  scroll-behavior: smooth;
+}
