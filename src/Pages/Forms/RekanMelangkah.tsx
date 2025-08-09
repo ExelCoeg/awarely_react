@@ -26,7 +26,7 @@ export const RekanMelangkah = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.post("/forms/createCounseling", {
+      await api.post("/forms/createCounseling", {
         type,
         counselor,
         contact,

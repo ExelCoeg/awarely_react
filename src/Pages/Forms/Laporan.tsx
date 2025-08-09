@@ -23,7 +23,7 @@ export const Laporan = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.post("/forms/createReport", {
+      await api.post("/forms/createReport", {
         contact,
         description,
         availability,

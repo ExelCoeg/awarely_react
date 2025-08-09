@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Footer = () => {
   return (
     <div className="flex flex-row justify-between w-full p-2 font-sans text-lg bg-white mt-100 items-evenly text-primary">
