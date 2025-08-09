@@ -29,14 +29,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    api
-      .get("/auth/me")
-      .then((res) => {
-        console.log("Fetched from /auth/me:", res.data.user);
-        setUser(res.data.user);
-      })
-      .catch(() => setUser(null))
-      .finally(() => setLoading(false));
+    const fetchUser = async () =>
+      await api
+        .get("/auth/me")
+        .then((res) => {
+          console.log("Fetched from /auth/me:", res.data.user);
+          setUser(res.data.user);
+        })
+        .catch(() => setUser(null))
+        .finally(() => setLoading(false));
+    fetchUser();
   }, []);
   return (
     <AuthContext.Provider value={{ user, loading, setUser }}>
