@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Menu } from "lucide-react";
-import AwarelyLogo from "../Assets/Logo.png";
+import Logo from "../assets/Logo.png";
 import { navigationItems } from "../Datas/navbarDatas";
 import { MoveLeft, User } from "lucide-react";
 import Button from "./Button";
@@ -15,7 +15,7 @@ export const Navbar = () => {
     <nav className="justify-center h-20 py-5 mx-auto bg-white shadow-xl max-w-425 mb-15 rounded-b-3xl">
       <div className="flex flex-row items-center justify-between px-10">
         <div className="flex items-center gap-2 ">
-          <img src={AwarelyLogo} alt="" />
+          <img src={Logo} alt="" />
           <h1 className="font-sans text-3xl font-semibold ">Awarely</h1>
         </div>
         <div className="items-center hidden gap-4 font-sans text-lg font-medium lg:flex">
