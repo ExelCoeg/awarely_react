@@ -3,8 +3,7 @@ import { heroHeaderData } from "../Datas/headerDatas";
 import HeroImage from "../assets/hero-image.png";
 import Button from "../Components/Button";
 import { useLocation } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "@/Context/AuthContext";
+import { useEffect, useState } from "react";
 export const Hero = () => {
   const location = useLocation();
   const [showPopUp, setShowPopUp] = useState(false);

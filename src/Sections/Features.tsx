@@ -27,8 +27,9 @@ export const Features = () => {
         className="mb-10 font-bold lg:text-2xl text-primary border-primary"
       ></Badge>
       <div className="flex flex-col items-center justify-center p-5 mx-4 mb-5 lg:flex-row lg:w-full lg:gap-10 rounded-2xl bg-primary">
-        {featuresDatas.map((item) => (
+        {featuresDatas.map((item, idx) => (
           <FeaturesCard
+            key={idx}
             title={item.title}
             subtitle={item.subtitle}
             description={item.description}

@@ -11,7 +11,6 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 interface User {
-  id: number;
   username: string;
   email: string;
 }
@@ -31,7 +30,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     api
-      .get("/auth/me", { withCredentials: true })
+      .get("/auth/me")
       .then((res) => {
         console.log("Fetched from /auth/me:", res.data.user);
         setUser(res.data.user);

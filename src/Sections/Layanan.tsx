@@ -20,8 +20,9 @@ export const Layanan = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center lg:flex-row ">
-        {layananDatas.map((item) => (
+        {layananDatas.map((item, idx) => (
           <LayananCard
+            key={idx}
             title={item.title}
             subtitle={item.subtitle}
             description={item.description}

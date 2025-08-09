@@ -12,12 +12,13 @@ import Header from "@/Components/Header";
 import { KonselorRMData } from "@/Datas/konselorDatas";
 
 export const RekanMelangkah = () => {
+  const type = "Rekan Melangkah";
   const [counselor, setCounselor] = useState("");
   const [contact, setContact] = useState("");
-  const [story, setStory] = useState("");
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [availability, setAvailability] = useState("no");
+  const [availability, setAvailability] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const sm_className = `mb-9 placeholder-tertiary`;
@@ -25,13 +26,14 @@ export const RekanMelangkah = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.post("/forms/layanan/rekanmelangkah", {
+      const res = await api.post("/forms/createCounseling", {
+        type,
         counselor,
         contact,
-        story,
+        description,
         availability,
-        date,
-        time,
+        schedule_date: new Date(date),
+        schedule_time: time,
       });
     } catch (err) {
       console.error("Submit Error!");
@@ -94,7 +96,7 @@ export const RekanMelangkah = () => {
             placeholder="Ceritakan disini..."
             className={`${sm_className} pb-30`}
             onChange={(e) => {
-              setStory(e.target.value);
+              setDescription(e.target.value);
             }}
           />
           <div className="flex flex-col gap-2 font-sans font-semibold text-white">
@@ -103,10 +105,10 @@ export const RekanMelangkah = () => {
               className="font-semibold text-white mb-9"
               name="availability"
               options={options}
-              value={availability}
+              value={availability ? "yes" : "no"}
               onChange={(val) => {
                 console.log("Set Availability value: " + val);
-                setAvailability(val);
+                setAvailability(val === "yes");
               }}
             />
           </div>
@@ -116,7 +118,7 @@ export const RekanMelangkah = () => {
               type="date"
               label="Tentukan jadwal pendampingan"
               placeholder="08xxxx"
-              disabled={availability === "no"}
+              disabled={availability === false}
               className={`${sm_className} lg:w-100`}
               onChange={(e) => {
                 setDate(e.target.value);
@@ -130,7 +132,7 @@ export const RekanMelangkah = () => {
                 onChange={(val) => {
                   setTime(val);
                 }}
-                disabled={availability === "no"}
+                disabled={availability === false}
               />
             </div>
           </div>
