@@ -18,11 +18,13 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   setUser: Dispatch<SetStateAction<User | null>>;
+  refreshUser: () => Promise<void>;
 }
 export const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
   setUser: () => {},
+  refreshUser: async () => {},
 });
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
@@ -43,7 +45,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, setUser }}>
+    <AuthContext.Provider
+      value={{ user, loading, setUser, refreshUser: fetchUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -13,7 +13,7 @@ export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { setUser } = useContext(AuthContext);
+  const { setUser, refreshUser } = useContext(AuthContext);
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -21,6 +21,7 @@ export const SignIn = () => {
       console.log("Login attempt with email:", email);
       const res = await api.post("/auth/login", { email, password });
       setUser(res.data.user);
+      refreshUser();
       navigate("/home", {
         state: {
           showPopUp: true,
