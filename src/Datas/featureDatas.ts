@@ -1,5 +1,5 @@
 import LaporIcon from "../assets/lapor.png";
-import BelaDiriIcon from "../assets/tutor.png";
+import BelaDiriIcon from "../assets/Tutor.png";
 import MotivasiIcon from "../assets/motivasi.png";
 
 export interface FeatureData {
@@ -10,7 +10,7 @@ export interface FeatureData {
   imageUrl?: string;
   subtitleColor?: string; // Optional, used for styling the subtitle background
   backgroundColor?: string;
-  href?:string;
+  href?: string;
 }
 
 export const featuresDatas: FeatureData[] = [
@@ -22,7 +22,7 @@ export const featuresDatas: FeatureData[] = [
     buttonText: "Laporkan",
     imageUrl: LaporIcon,
     backgroundColor: "bg-orange-100",
-    href:"/laporan"
+    href: "/laporan",
   },
   {
     title: "Tutorial Beladiri",
