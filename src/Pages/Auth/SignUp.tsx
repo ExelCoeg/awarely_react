@@ -1,10 +1,9 @@
 import Button from "@/Components/Button";
 import InputField from "@/Components/InputField";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/axios";
 import LoadingOverlay from "@/Components/LoadingOverlay";
-import AuthContext from "@/Context/AuthContext";
 import ErrorMessage from "@/Components/ErrorMessage";
 export const SignUp = () => {
   const navigate = useNavigate();
